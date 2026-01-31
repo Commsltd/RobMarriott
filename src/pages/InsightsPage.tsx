@@ -45,7 +45,7 @@ const InsightModal = ({ insight, onClose }: { insight: Insight; onClose: () => v
                 {/* Close Button */}
                 <button
                     onClick={onClose}
-                    className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:bg-black/70 transition-all"
+                    className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white/80 hover:text-white hover:bg-black/70 transition-all"
                     aria-label="Close"
                 >
                     <X className="w-5 h-5" />
@@ -70,7 +70,7 @@ const InsightModal = ({ insight, onClose }: { insight: Insight; onClose: () => v
                                         {insight.type}
                                     </span>
                                     {insight.readingTime && (
-                                        <span className="flex items-center gap-1 text-white/70 text-sm">
+                                        <span className="flex items-center gap-1 text-white/80 text-sm">
                                             <Clock className="w-4 h-4" />
                                             {insight.readingTime}
                                         </span>
@@ -80,7 +80,7 @@ const InsightModal = ({ insight, onClose }: { insight: Insight; onClose: () => v
                                     {insight.title}
                                 </h1>
                                 {insight.subtitle && (
-                                    <p className="text-lg text-white/70 mt-2">
+                                    <p className="text-lg text-white/80 mt-2">
                                         {insight.subtitle}
                                     </p>
                                 )}

@@ -134,7 +134,7 @@ export const ContactFormModal = ({
                             <h2 className="text-xl font-light text-white">{title}</h2>
                             <button
                                 onClick={onClose}
-                                className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 transition-all"
+                                className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-white/80 hover:text-white hover:bg-white/10 transition-all"
                                 aria-label="Close"
                             >
                                 <X className="w-4 h-4" />
@@ -151,7 +151,7 @@ export const ContactFormModal = ({
                                 >
                                     <CheckCircle className="w-16 h-16 text-[var(--color-accent)] mx-auto mb-4" />
                                     <h3 className="text-xl font-light text-white mb-2">Message Sent!</h3>
-                                    <p className="text-white/60">Thank you for reaching out.</p>
+                                    <p className="text-white/70">Thank you for reaching out.</p>
                                 </motion.div>
                             ) : status === 'error' ? (
                                 <motion.div
@@ -161,7 +161,7 @@ export const ContactFormModal = ({
                                 >
                                     <AlertCircle className="w-16 h-16 text-red-400 mx-auto mb-4" />
                                     <h3 className="text-xl font-light text-white mb-2">Something went wrong</h3>
-                                    <p className="text-white/60 mb-4">Please try again or email directly.</p>
+                                    <p className="text-white/70 mb-4">Please try again or email directly.</p>
                                     <button
                                         type="button"
                                         onClick={() => setStatus('idle')}
@@ -173,7 +173,7 @@ export const ContactFormModal = ({
                             ) : (
                                 <>
                                     <div>
-                                        <label htmlFor="name" className="block text-sm text-white/70 mb-2">Name *</label>
+                                        <label htmlFor="name" className="block text-sm text-white/80 mb-2">Name *</label>
                                         <input
                                             type="text"
                                             id="name"
@@ -181,13 +181,13 @@ export const ContactFormModal = ({
                                             required
                                             value={formData.name}
                                             onChange={handleInputChange}
-                                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-[var(--color-accent)] focus:ring-1 focus:ring-[var(--color-accent)] transition-all"
+                                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-[var(--color-accent)] focus:ring-1 focus:ring-[var(--color-accent)] transition-all"
                                             placeholder="Your name"
                                         />
                                     </div>
 
                                     <div>
-                                        <label htmlFor="email" className="block text-sm text-white/70 mb-2">Email *</label>
+                                        <label htmlFor="email" className="block text-sm text-white/80 mb-2">Email *</label>
                                         <input
                                             type="email"
                                             id="email"
@@ -195,26 +195,26 @@ export const ContactFormModal = ({
                                             required
                                             value={formData.email}
                                             onChange={handleInputChange}
-                                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-[var(--color-accent)] focus:ring-1 focus:ring-[var(--color-accent)] transition-all"
+                                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-[var(--color-accent)] focus:ring-1 focus:ring-[var(--color-accent)] transition-all"
                                             placeholder="your@email.com"
                                         />
                                     </div>
 
                                     <div>
-                                        <label htmlFor="company" className="block text-sm text-white/70 mb-2">Company</label>
+                                        <label htmlFor="company" className="block text-sm text-white/80 mb-2">Company</label>
                                         <input
                                             type="text"
                                             id="company"
                                             name="company"
                                             value={formData.company}
                                             onChange={handleInputChange}
-                                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-[var(--color-accent)] focus:ring-1 focus:ring-[var(--color-accent)] transition-all"
+                                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-[var(--color-accent)] focus:ring-1 focus:ring-[var(--color-accent)] transition-all"
                                             placeholder="Your company (optional)"
                                         />
                                     </div>
 
                                     <div>
-                                        <label htmlFor="message" className="block text-sm text-white/70 mb-2">Message *</label>
+                                        <label htmlFor="message" className="block text-sm text-white/80 mb-2">Message *</label>
                                         <textarea
                                             id="message"
                                             name="message"
@@ -222,7 +222,7 @@ export const ContactFormModal = ({
                                             rows={4}
                                             value={formData.message}
                                             onChange={handleInputChange}
-                                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-[var(--color-accent)] focus:ring-1 focus:ring-[var(--color-accent)] transition-all resize-none"
+                                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-[var(--color-accent)] focus:ring-1 focus:ring-[var(--color-accent)] transition-all resize-none"
                                             placeholder="How can I help you?"
                                         />
                                     </div>
@@ -237,7 +237,7 @@ export const ContactFormModal = ({
                                             className="mt-1 w-4 h-4 rounded border-white/20 bg-white/5 text-[var(--color-accent)] focus:ring-[var(--color-accent)] focus:ring-offset-0 focus:ring-1"
                                             required
                                         />
-                                        <label htmlFor="consent" className="text-sm text-white/60 leading-relaxed">
+                                        <label htmlFor="consent" className="text-sm text-white/70 leading-relaxed">
                                             I agree to the processing of my data as described in the{' '}
                                             <Link
                                                 to="/privacy"
@@ -274,7 +274,7 @@ export const ContactFormModal = ({
                         {/* Footer Note */}
                         {status === 'idle' && (
                             <div className="px-6 pb-6">
-                                <p className="text-xs text-white/40 text-center">
+                                <p className="text-xs text-white/50 text-center">
                                     Your information is secure and will never be shared.
                                 </p>
                             </div>
