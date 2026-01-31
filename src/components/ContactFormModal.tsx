@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -22,6 +23,15 @@ export const ContactFormModal = ({
     onSuccess,
     initialMessage = ""
 }: ContactFormModalProps) => {
+    // Lock body scroll when modal is open
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isOpen]);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -97,7 +107,7 @@ export const ContactFormModal = ({
     // Reset form when modal opens, if needed, or preserve state?
     // For now, simple standard behavior.
 
-    return (
+    return createPortal(
         <AnimatePresence>
             {isOpen && (
                 <motion.div
@@ -272,6 +282,7 @@ export const ContactFormModal = ({
                     </motion.div>
                 </motion.div>
             )}
-        </AnimatePresence>
+        </AnimatePresence>,
+        document.body
     );
 };

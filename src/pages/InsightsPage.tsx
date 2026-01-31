@@ -12,13 +12,6 @@ import { ArticleCTA } from '../components/insights/ArticleCTA';
 
 // Modal Detail View Component
 const InsightModal = ({ insight, onClose }: { insight: Insight; onClose: () => void }) => {
-    // Prevent body scroll when modal is open
-    useEffect(() => {
-        document.body.style.overflow = 'hidden';
-        return () => {
-            document.body.style.overflow = 'unset';
-        };
-    }, []);
 
     // Close on escape key
     useEffect(() => {
@@ -31,7 +24,7 @@ const InsightModal = ({ insight, onClose }: { insight: Insight; onClose: () => v
 
     return (
         <motion.div
-            className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto"
+            className="fixed inset-0 z-50 flex items-start justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
