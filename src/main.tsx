@@ -1,9 +1,10 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { HelmetProvider } from 'react-helmet-async'
+import { BrowserRouter } from 'react-router-dom'
 import './styles/tokens.css'
 import './styles/grid.css'
 import './index.css'
-import { BrowserRouter } from 'react-router-dom'
 import App from './App.tsx'
 
 console.log('Main.tsx executing...');
@@ -15,9 +16,11 @@ try {
   console.log('Found root element, mounting React app...');
   createRoot(rootElement).render(
     <StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <HelmetProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </HelmetProvider>
     </StrictMode>,
   );
   console.log('React app mounted successfully');

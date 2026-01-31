@@ -25,6 +25,7 @@ function App() {
           <Route path="/capabilities" element={<TransitionWrapper><CapabilitiesPage /></TransitionWrapper>} />
           <Route path="/diagnostic" element={<TransitionWrapper><DiagnosticPage /></TransitionWrapper>} />
           <Route path="/insights" element={<TransitionWrapper><InsightsPage /></TransitionWrapper>} />
+          <Route path="/insights/:slug" element={<TransitionWrapper><InsightsPage /></TransitionWrapper>} />
           <Route path="/privacy" element={<TransitionWrapper><PrivacyPage /></TransitionWrapper>} />
           <Route path="/terms" element={<TransitionWrapper><TermsPage /></TransitionWrapper>} />
         </Routes>

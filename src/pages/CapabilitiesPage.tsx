@@ -1,5 +1,7 @@
 
 import { useState, useMemo } from 'react';
+import { SEO } from '../components/seo/SEO';
+import { SchemaOrg } from '../components/seo/SchemaOrg';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     ArrowLeft, ArrowRight, RotateCcw, Target, Lightbulb, Award, LayoutGrid, CheckCircle2,
@@ -370,6 +372,19 @@ export const CapabilitiesPage = () => {
             {/* 
                 ABSTRACT IMAGE BACKGROUND 
             */}
+            <SEO
+                title="Strategic Capabilities | Robert Marriott"
+                description="Explore the core competencies and methodologies used to deliver high-stakes O2C transformation and leadership development programmes."
+                canonical="/capabilities"
+            />
+            <SchemaOrg
+                type="WebSite"
+                data={{
+                    name: "Robert Marriott - Strategic Capabilities",
+                    url: "https://rob-marriott-portfolio.vercel.app/capabilities",
+                    description: "Explore the core competencies and methodologies used to deliver high-stakes O2C transformation and leadership development programmes."
+                }}
+            />
             <div className="fixed inset-0 z-0 pointer-events-none bg-[#020403]">
                 {/* Main gradient map */}
                 <div className="absolute inset-0 opacity-40 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-emerald-900/40 via-[#051010] to-black" />

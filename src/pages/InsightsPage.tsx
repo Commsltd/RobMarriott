@@ -1,4 +1,7 @@
 import { useState, useMemo, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { SEO } from '../components/seo/SEO';
+import { SchemaOrg } from '../components/seo/SchemaOrg';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Tag, X, Calendar, Clock } from 'lucide-react';
 import { Header } from '../components/layout/Header';
@@ -165,10 +168,17 @@ const InsightModal = ({ insight, onClose }: { insight: Insight; onClose: () => v
 
 // Main Insights Grid Component
 export const InsightsPage = () => {
+    const { slug } = useParams();
+    const navigate = useNavigate();
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedType, setSelectedType] = useState<InsightType | 'all'>('all');
     const [selectedTag, setSelectedTag] = useState<string | null>(null);
-    const [selectedInsight, setSelectedInsight] = useState<Insight | null>(null);
+
+    // Derived state for modal from URL
+    const selectedInsight = useMemo(() => {
+        if (!slug) return null;
+        return INSIGHTS.find(i => i.slug === slug) || null;
+    }, [slug]);
 
     // Filter insights
     const filteredInsights = useMemo(() => {
@@ -185,6 +195,14 @@ export const InsightsPage = () => {
         });
     }, [searchQuery, selectedType, selectedTag]);
 
+    const handleInsightClick = (insight: Insight) => {
+        navigate(`/insights/${insight.slug}`);
+    };
+
+    const handleCloseModal = () => {
+        navigate('/insights');
+    };
+
     const typeIcons: Record<InsightType, string> = {
         article: '📝',
         video: '🎬',
@@ -193,6 +211,28 @@ export const InsightsPage = () => {
 
     return (
         <>
+            <SEO
+                title={selectedInsight ? selectedInsight.title : "Insights"}
+                description={selectedInsight ? selectedInsight.excerpt : "Articles and thought leadership on O2C transformation, leadership development, and organizational design."}
+                type={selectedInsight ? 'article' : 'website'}
+                image={selectedInsight?.thumbnail}
+                canonical={selectedInsight ? `/insights/${selectedInsight.slug}` : '/insights'}
+            />
+            {selectedInsight && (
+                <SchemaOrg
+                    type="Article"
+                    data={{
+                        headline: selectedInsight.title,
+                        description: selectedInsight.excerpt,
+                        image: selectedInsight.headerImage,
+                        datePublished: selectedInsight.publishedDate,
+                        author: {
+                            '@type': 'Person',
+                            name: 'Robert Marriott'
+                        }
+                    }}
+                />
+            )}
             <Header />
             <main className="min-h-screen bg-[var(--color-bg-primary)] pt-24 pb-16">
                 {/* Grid with left/right margins */}
@@ -302,7 +342,7 @@ export const InsightsPage = () => {
                                     animate={{ opacity: 1, scale: 1 }}
                                     exit={{ opacity: 0, scale: 0.95 }}
                                     transition={{ delay: i * 0.05 }}
-                                    onClick={() => setSelectedInsight(insight)}
+                                    onClick={() => handleInsightClick(insight)}
                                     className="group cursor-pointer"
                                 >
                                     <div className="glass-card overflow-hidden hover:bg-white/5 transition-all duration-300 h-full flex flex-col">
@@ -416,7 +456,7 @@ export const InsightsPage = () => {
                 {selectedInsight && (
                     <InsightModal
                         insight={selectedInsight}
-                        onClose={() => setSelectedInsight(null)}
+                        onClose={handleCloseModal}
                     />
                 )}
             </AnimatePresence>

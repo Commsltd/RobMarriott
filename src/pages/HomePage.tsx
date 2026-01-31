@@ -4,6 +4,8 @@ import { ArrowUpRight, CheckCircle, TrendingUp, Users, Target, Award, Mail, Link
 import { PROFILE, COACHING_SERVICES, TESTIMONIALS } from '../data/portfolio';
 import robertHeadshot from '../assets/robert-headshot.png';
 import { ContactFormModal } from '../components/ContactFormModal';
+import { SEO } from '../components/seo/SEO';
+import { SchemaOrg } from '../components/seo/SchemaOrg';
 import CountUp from '../components/CountUp';
 import { useMotionValue, useTransform } from 'framer-motion';
 
@@ -1007,6 +1009,23 @@ export const HomePage = () => {
 
     return (
         <Layout>
+            <SEO
+                title="Executive Coach & Strategic Advisor"
+                description="Robert Marriott helps organizations align people, processes, and technology for sustainable growth through O2C transformation and leadership development."
+                canonical="/"
+                image="/og-default.png"
+            />
+            <SchemaOrg
+                type="Person"
+                data={{
+                    name: "Robert Marriott",
+                    url: "https://rob-marriott-portfolio.vercel.app",
+                    jobTitle: "Executive Coach & Strategic Advisor",
+                    sameAs: ["https://www.linkedin.com/in/robert-marriott-36b51a3/"],
+                    image: "https://rob-marriott-portfolio.vercel.app/robert-headshot.png",
+                    description: "Bridging the gap between vision and execution in O2C transformation and leadership development."
+                }}
+            />
             <HeroSection />
             <InsightsSection />
             <PipelineSection />
