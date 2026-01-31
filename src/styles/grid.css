@@ -1,0 +1,471 @@
+/* 
+ * Robert Marriott Consulting - Grid System
+ * 12-column (desktop), 8-column (tablet), 4-column (mobile)
+ * Max content width: 1280px
+ */
+
+/* =============================================================================
+   CONTAINER
+   ============================================================================= */
+
+.container {
+    width: 100%;
+    max-width: var(--max-width-content);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-6);
+    padding-right: var(--space-6);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding-left: var(--space-4);
+        padding-right: var(--space-4);
+    }
+}
+
+/* =============================================================================
+   GRID SYSTEM
+   ============================================================================= */
+
+.grid {
+    display: grid;
+    gap: var(--space-6);
+}
+
+/* 12-column grid (Desktop) */
+.grid-12 {
+    grid-template-columns: repeat(12, 1fr);
+}
+
+/* Column spans - Desktop */
+.col-1 {
+    grid-column: span 1;
+}
+
+.col-2 {
+    grid-column: span 2;
+}
+
+.col-3 {
+    grid-column: span 3;
+}
+
+.col-4 {
+    grid-column: span 4;
+}
+
+.col-5 {
+    grid-column: span 5;
+}
+
+.col-6 {
+    grid-column: span 6;
+}
+
+.col-7 {
+    grid-column: span 7;
+}
+
+.col-8 {
+    grid-column: span 8;
+}
+
+.col-9 {
+    grid-column: span 9;
+}
+
+.col-10 {
+    grid-column: span 10;
+}
+
+.col-11 {
+    grid-column: span 11;
+}
+
+.col-12 {
+    grid-column: span 12;
+}
+
+/* Column start positions */
+.col-start-1 {
+    grid-column-start: 1;
+}
+
+.col-start-2 {
+    grid-column-start: 2;
+}
+
+.col-start-3 {
+    grid-column-start: 3;
+}
+
+.col-start-4 {
+    grid-column-start: 4;
+}
+
+.col-start-5 {
+    grid-column-start: 5;
+}
+
+.col-start-6 {
+    grid-column-start: 6;
+}
+
+.col-start-7 {
+    grid-column-start: 7;
+}
+
+/* =============================================================================
+   TABLET (8-column grid)
+   ============================================================================= */
+
+@media (max-width: 1024px) {
+    .grid-12 {
+        grid-template-columns: repeat(8, 1fr);
+    }
+
+    /* Tablet column adjustments */
+    .md\:col-1 {
+        grid-column: span 1;
+    }
+
+    .md\:col-2 {
+        grid-column: span 2;
+    }
+
+    .md\:col-3 {
+        grid-column: span 3;
+    }
+
+    .md\:col-4 {
+        grid-column: span 4;
+    }
+
+    .md\:col-5 {
+        grid-column: span 5;
+    }
+
+    .md\:col-6 {
+        grid-column: span 6;
+    }
+
+    .md\:col-7 {
+        grid-column: span 7;
+    }
+
+    .md\:col-8 {
+        grid-column: span 8;
+    }
+
+    /* Common tablet patterns */
+    .col-6 {
+        grid-column: span 4;
+    }
+
+    /* Half width */
+    .col-4 {
+        grid-column: span 4;
+    }
+
+    /* Third becomes half */
+    .col-3 {
+        grid-column: span 4;
+    }
+
+    /* Quarter becomes half */
+}
+
+/* =============================================================================
+   MOBILE (4-column grid)
+   ============================================================================= */
+
+@media (max-width: 768px) {
+    .grid-12 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .grid {
+        gap: var(--space-4);
+    }
+
+    /* Mobile column adjustments */
+    .sm\:col-1 {
+        grid-column: span 1;
+    }
+
+    .sm\:col-2 {
+        grid-column: span 2;
+    }
+
+    .sm\:col-3 {
+        grid-column: span 3;
+    }
+
+    .sm\:col-4 {
+        grid-column: span 4;
+    }
+
+    /* Common mobile patterns - full width */
+    .col-6,
+    .col-4,
+    .col-3 {
+        grid-column: span 4;
+    }
+}
+
+/* =============================================================================
+   COMMON LAYOUT PATTERNS
+   ============================================================================= */
+
+/* Two-column split (50/50) */
+.grid-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+}
+
+@media (max-width: 768px) {
+    .grid-split {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Three-column (33/33/33) */
+.grid-thirds {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+}
+
+@media (max-width: 1024px) {
+    .grid-thirds {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-thirds {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Four-column cards */
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+}
+
+@media (max-width: 1024px) {
+    .grid-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Hero split (content/visual) */
+.grid-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: center;
+}
+
+@media (max-width: 1024px) {
+    .grid-hero {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+    }
+}
+
+/* =============================================================================
+   FLEXBOX UTILITIES
+   ============================================================================= */
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.items-start {
+    align-items: flex-start;
+}
+
+.items-end {
+    align-items: flex-end;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-end {
+    justify-content: flex-end;
+}
+
+.gap-2 {
+    gap: var(--space-2);
+}
+
+.gap-3 {
+    gap: var(--space-3);
+}
+
+.gap-4 {
+    gap: var(--space-4);
+}
+
+.gap-6 {
+    gap: var(--space-6);
+}
+
+.gap-8 {
+    gap: var(--space-8);
+}
+
+/* =============================================================================
+   SPACING UTILITIES
+   ============================================================================= */
+
+/* Padding */
+.p-4 {
+    padding: var(--space-4);
+}
+
+.p-6 {
+    padding: var(--space-6);
+}
+
+.p-8 {
+    padding: var(--space-8);
+}
+
+.py-4 {
+    padding-top: var(--space-4);
+    padding-bottom: var(--space-4);
+}
+
+.py-6 {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-6);
+}
+
+.py-8 {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
+}
+
+.py-12 {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-12);
+}
+
+.py-16 {
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-16);
+}
+
+.py-24 {
+    padding-top: var(--space-24);
+    padding-bottom: var(--space-24);
+}
+
+.px-4 {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+}
+
+.px-6 {
+    padding-left: var(--space-6);
+    padding-right: var(--space-6);
+}
+
+/* Margin */
+.mt-4 {
+    margin-top: var(--space-4);
+}
+
+.mt-6 {
+    margin-top: var(--space-6);
+}
+
+.mt-8 {
+    margin-top: var(--space-8);
+}
+
+.mt-12 {
+    margin-top: var(--space-12);
+}
+
+.mb-4 {
+    margin-bottom: var(--space-4);
+}
+
+.mb-6 {
+    margin-bottom: var(--space-6);
+}
+
+.mb-8 {
+    margin-bottom: var(--space-8);
+}
+
+.mb-12 {
+    margin-bottom: var(--space-12);
+}
+
+/* =============================================================================
+   SECTION COMPONENT
+   ============================================================================= */
+
+.section {
+    padding-top: var(--section-padding-y);
+    padding-bottom: var(--section-padding-y);
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding-top: var(--section-padding-y-mobile);
+        padding-bottom: var(--section-padding-y-mobile);
+    }
+}
+
+.section-header {
+    margin-bottom: var(--space-12);
+    text-align: center;
+}
+
+.section-header h2 {
+    font-size: var(--text-h2);
+    font-weight: var(--font-bold);
+    letter-spacing: var(--tracking-tight);
+    margin-bottom: var(--space-4);
+}
+
+.section-header p {
+    font-size: var(--text-body-lg);
+    color: var(--color-text-secondary);
+    max-width: var(--max-width-text);
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>temp_app</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      window.onerror = function(msg, url, line, col, error) {
+        var div = document.createElement("div");
+        div.style.cssText = "position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 9999; padding: 20px; color: red; font-family: monospace; overflow: auto; border: 5px solid red;";
+        div.innerHTML = "<h1>Application Error</h1>" +
+          "<h3>" + msg + "</h3>" +
+          "<p><strong>Location:</strong> " + url + ":" + line + ":" + col + "</p>" +
+          "<pre>" + (error && error.stack ? error.stack : "No stack trace") + "</pre>";
+        document.body.appendChild(div);
+      };
+      window.onunhandledrejection = function(event) {
+        var div = document.createElement("div");
+        div.style.cssText = "position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 9999; padding: 20px; color: red; font-family: monospace; overflow: auto; border: 5px solid red;";
+        div.innerHTML = "<h1>Unhandled Promise Rejection</h1>" +
+          "<pre>" + (event.reason && event.reason.stack ? event.reason.stack : event.reason) + "</pre>";
+        document.body.appendChild(div);
+      };
+    </script>
+
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

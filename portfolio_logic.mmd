@@ -1,0 +1,48 @@
+stateDiagram-v2
+    [*] --> Homepage_Matrix: Start Session
+    
+    state "Homepage (Competency Grid)" as Homepage_Matrix {
+        [*] --> Idle
+        Idle --> Filtering: User Hovers Competency (e.g., Strategic Leadership)
+        Filtering --> Idle: Mouse Out
+    }
+
+    Homepage_Matrix --> Filtered_Evidence_View: Click Competency (C1)
+    
+    state "Filtered Evidence View" as Filtered_Evidence_View {
+        note right of Filtered_Evidence_View
+            System executes:
+            SELECT Phases 
+            FROM Projects 
+            WHERE Competency_Tags CONTAINS 'C1'
+        end note
+        
+        state "Evidence Cards" as Cards
+        Cards --> Cards: Scroll/Browse
+    }
+
+    Filtered_Evidence_View --> Phase_Detail_View: Select Specific Evidence (e.g., APC Phase 1)
+
+    state "Phase Detail View (The Content)" as Phase_Detail_View {
+        
+        state "Horizontal Navigation (Time)" as Linear_Logic {
+            [*] --> Current_Phase
+            Current_Phase --> Next_Phase: "Next Step in Process"
+            Next_Phase --> Current_Phase: "Previous Step"
+            note right of Next_Phase
+                e.g., APC Phase 1 -> APC Phase 2
+                (Universal Methodology)
+            end note
+        }
+
+        state "Vertical Navigation (Theme)" as Lateral_Logic {
+            Current_Phase --> Related_Node: "See other Strategic Leadership examples"
+            note right of Related_Node
+                e.g., APC Phase 1 -> Tech Curr Phase 2
+                (Competency Logic)
+            end note
+        }
+    }
+
+    Phase_Detail_View --> Homepage_Matrix: Reset / Home
+    Phase_Detail_View --> Filtered_Evidence_View: BO (Back to Comp C1)
